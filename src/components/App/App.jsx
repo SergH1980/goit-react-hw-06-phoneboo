@@ -11,35 +11,14 @@ import Section from '../Section/Section';
 import ContactFilter from '../ContactFilter/ContactFilter';
 
 export default function App() {
-  // const [contacts, setContacts] = useState(
-  //   []
-  //   // () => {
-  //   // // check if LS has contacts
-  //   // const savedContacts = localStorage.getItem(`contacts`);
-  //   // const parsedContacts = JSON.parse(savedContacts);
-
-  //   // if (!savedContacts) {
-  //   //   return [];
-  //   // } else {
-  //   //   return parsedContacts;
-  //   // }
-  //   // }
-  // );
-  // const [filter, setFilter] = useState(``);
-
-  // adding contacts to LS
-  // useEffect(() => {
-  //   localStorage.setItem(`contacts`, JSON.stringify(contacts));
-  // }, [contacts]);
-
   return (
     <AppStyle>
       <Section title="Phonebook">
         <ContactForm />
       </Section>
-      <Section title={'Contacts'}>
+      <Section title="Contacts">
         <ContactFilter />
-        <ContactList contacts={`getVisibleContacts()`} />
+        <ContactList />
       </Section>
       <ToastContainer />
       <GlobalStyle />
