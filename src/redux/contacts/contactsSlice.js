@@ -27,8 +27,7 @@ const contactsSlice = createSlice({
         state.some(
           contact =>
             contact.name.toLowerCase().trim() ===
-              action.payload.name.toLowerCase().trim() ||
-            contact.number.trim() === action.payload.number.trim()
+            action.payload.name.toLowerCase().trim()
         )
           ? notify(action.payload.name)
           : state.push(action.payload);

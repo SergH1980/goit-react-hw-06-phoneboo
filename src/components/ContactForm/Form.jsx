@@ -1,5 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts } from 'redux/contacts/contactSelectors';
 
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -26,6 +27,7 @@ const SignupSchem = Yup.object().shape({
 
 export default function ContactForm() {
   const dispatch = useDispatch();
+  const contactList = useSelector(getContacts);
 
   return (
     <Formik
@@ -33,7 +35,12 @@ export default function ContactForm() {
       validationSchema={SignupSchem}
       onSubmit={(values, { resetForm }) => {
         dispatch(addContact(values));
-        resetForm();
+        const toCompareName = contact => {
+          return contact.name === values.name;
+        };
+        if (!contactList.some(toCompareName)) {
+          return resetForm();
+        }
       }}
     >
       <Form>
